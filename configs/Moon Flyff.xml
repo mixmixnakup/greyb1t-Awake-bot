@@ -1,0 +1,87 @@
+<Settings>
+	<!-- 
+	Awake Type Explanation:
+	name -> The name to display inside of the bot when choosing the awake (Example: ADOCH)
+	gametext -> Case-sensitive awake line text inside of the game (Example: Additional Damage of Critical Hits) 
+	comparisonmethod -> An additional attribute to modify which method an awake is compared with. Options are Exact and Contains. Exact is default.
+						Example <Type name="INT" gametext="INT" comparisonmethod="Contains" text_to_find="NT"></Type>
+						
+						"Contains" compares by checking if the read awake contains the value in text_to_find
+						"Exact" does an exact case insensitive comparison (this is the default and preferred)
+					
+	text_to_find -> If using comparison method Contains, then text_to_find is the value to find within the awake text.
+	-->
+	<AwakeTypes>  
+		<Type name="Dégâts des coups critiques" gametext="Dégâts des coups critiques"></Type>
+		<Type name="Vitesse d'incantation" gametext="Vitesse d'incantation"></Type>
+		<Type name="Vitesse de déplacement" gametext="Vitesse de déplacement"></Type>
+		
+		<!-- Why contains on this one? Because the 'q' in Atq is read as a 'g'. Therefore find all but the 'q' -->
+		<Type name="Vit Atq" gametext="Vit Atq" comparisonmethod="Contains" text_to_find="Vit At"></Type>
+		
+		<Type name="Attaque" gametext="Attaque"></Type>
+		<Type name="Critique" gametext="Critique"></Type>
+		<Type name="INT" gametext="INT"></Type>
+		<Type name="STA" gametext="STA"></Type>
+		<Type name="STR" gametext="STR"></Type>
+		<Type name="DEX" gametext="DEX"></Type>
+		<Type name="FOR" gametext="FOR"></Type>
+		<Type name="END" gametext="END"></Type>
+		<Type name="PM max." gametext="PM max."></Type>
+	</AwakeTypes>
+
+	<!-- 
+	The color of a pixel in the in-game awake line text. 
+	Format: RGB (R, G, B) 
+	
+	Adding multiple awake colors example:
+	<Setting name="AwakeTextPixelColorRgb">0, 255, 0</Setting>
+	<Setting name="AwakeTextPixelColorRgb1">0, 0, 255</Setting>
+	<Setting name="AwakeTextPixelColorRgb2">245, 0, 0</Setting>
+	<Setting name="AwakeTextPixelColorRgb3">0, 0, 185</Setting>
+	
+	The above example of multiple awake colors will find awakes with all of those pixel colors
+	You can add as many as you want. 
+	It requires the format as above: AwakeTextPixelColorRgb, AwakeTextPixelColorRgb1, AwakeTextPixelColorRgb2... and so on.
+	
+	Adding a range of pixel colors:
+	<Setting name="AwakeTextPixelColorRgb">0, 245-255, 0</Setting>
+	
+	The above example will stop when the pixel color is between 0, 245, 0 and 0, 255, 0
+	It will stop at 0, 251, 0 as an example.
+	-->
+	
+	<!-- Pixel color range for the main blue text -->
+	<Setting name="AwakeTextPixelColorRgb">127-136, 172-181, 246-255</Setting>
+	
+	<!-- Pixel color range for the minor disruptions (e.g. on letter 'i' and 'N') on the edges of letters -->
+	<Setting name="AwakeTextPixelColorRgb1">105-112, 142-150, 200-207</Setting>
+	
+	<!-- Pixel color range for the major disruptions (e.g. right top edge of letter 'V') on the edges of letters -->
+	<Setting name="AwakeTextPixelColorRgb2">76-81, 102-108, 139-144</Setting>
+  
+	<!-- Pixel colors for the awakes when reached the highest value -->
+	<Setting name="AwakeTextPixelColorRgb3">255, 132, 132</Setting>
+	<Setting name="AwakeTextPixelColorRgb4">211, 109, 107</Setting>
+	<Setting name="AwakeTextPixelColorRgb5">152, 79, 75</Setting>
+  
+	<!-- 
+	The amount of time in milliseconds it takes before an awake scroll is done
+	showing that "Watering Effect" on the item before awakening it 
+	-->
+	<Setting name="ScrollDelayMs">200</Setting>
+  
+	<!-- 
+	The value for Language is the name of the .traineddata file.
+	Example eng.traineddata, then the value is eng
+			por.traineddata, then the value is por
+	-->
+	<Setting name="Language">fra</Setting>
+  
+	<!-- 
+	Words that are ignored when the OCR engine reads the awake
+	NOTE: Do not add a space after comma, the space counts as part of the word 
+	Format: Word1,Word2,Word3
+	-->
+	<Setting name="OcrIgnoreWords">Propriété apportée par la,Bénédiction de la Déesse</Setting>
+</Settings>
